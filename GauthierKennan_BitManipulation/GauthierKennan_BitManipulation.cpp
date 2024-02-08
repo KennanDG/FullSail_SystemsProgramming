@@ -2,13 +2,74 @@
 //
 
 #include <iostream>
+#include <string>
+
 
 unsigned int bitField = 19; // Global Value
 
+
+std::string ConvertToBinary(unsigned int numb); // Method used to convert a number into its binary format.
+
+
+void TurnOn(int bit); // Method used to "turn on" (change from 0 to 1) a bit at a specific index.
+
+
+
+
+
+
 int main()
 {
-    std::cout << "Hello World!\n";
+    std::string test = ConvertToBinary(bitField);
+
+    std::cout << test << "\n\n";
+    
+    TurnOn(2);
+
+    std::string test2 = ConvertToBinary(bitField);
+
+    std::cout << test2 << "\n\n"; 
+
+    std::cout << sizeof(int) * 8;
+
+
 }
+
+
+
+
+std::string ConvertToBinary(unsigned int numb)
+{
+    std::string result;
+
+    const int totalBits = sizeof(int) * 8; // Variable used to represent the amount of bits in an int data type (32).
+
+    for (int i = 1; i <= totalBits; i++) // Loops 32 times
+    {
+        // Checks if the bit index is turned on (is 1) or is turned off (is 0)
+        // starting at the 32nd index.
+        if (numb & (1 << (totalBits - i) ) ) 
+        {
+            result += "1"; // Appends "1" to the string return variable if the bit index is on.
+        }
+        else
+        {
+            result += "0"; // Appends "0" to the string return variable if the bit index is off.
+        }
+    }
+    
+    return result;
+}
+
+
+
+void TurnOn(int bit)
+{
+    bitField |= (1 << bit);
+}
+
+
+
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
