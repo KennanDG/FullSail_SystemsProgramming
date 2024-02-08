@@ -10,10 +10,11 @@ unsigned int bitField = 19; // Global Value
 
 std::string ConvertToBinary(unsigned int numb); // Method used to convert a number into its binary format.
 
+void TurnOn(int bitIndex); // Method used to "turn on" (change from 0 to 1) a bit at a specific index.
 
-void TurnOn(int bit); // Method used to "turn on" (change from 0 to 1) a bit at a specific index.
+void TurnOff(int bitIndex); // Method used to "turn off" (change from 1 to 0) a bit at a specific index. 
 
-
+void Toggle(int bitIndex); // Method used to "toggle" (0 becomes 1 and vice versa) a bit at a specific index.
 
 
 
@@ -21,17 +22,12 @@ void TurnOn(int bit); // Method used to "turn on" (change from 0 to 1) a bit at 
 int main()
 {
     std::string test = ConvertToBinary(bitField);
-
     std::cout << test << "\n\n";
-    
-    TurnOn(2);
 
-    std::string test2 = ConvertToBinary(bitField);
+    Toggle(10);
 
+    std::string test2 = ConvertToBinary(bitField); 
     std::cout << test2 << "\n\n"; 
-
-    std::cout << sizeof(int) * 8;
-
 
 }
 
@@ -63,9 +59,21 @@ std::string ConvertToBinary(unsigned int numb)
 
 
 
-void TurnOn(int bit)
+void TurnOn(int bitIndex)
 {
-    bitField |= (1 << bit);
+    bitField |= (1 << bitIndex);
+}
+
+
+
+void TurnOff(int bitIndex)
+{
+    bitField &= ~(1 << bitIndex);
+}
+
+void Toggle(int bitIndex)
+{
+    bitField ^= (1 << bitIndex);
 }
 
 
