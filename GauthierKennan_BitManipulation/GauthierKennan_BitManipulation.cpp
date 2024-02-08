@@ -23,6 +23,7 @@ void LeftShift(unsigned int numb); // Left shifts the numb int parameter by 1.
 
 void RightShift(unsigned int numb); // Right shifts the numb int parameter by 1.
 
+int AskForNumber(); // Mehtod used to verify and store user input.
 
 
 
@@ -51,21 +52,9 @@ int main()
         std::cout << bitwise << std::endl; 
     }
 
-    // Prompts user for input and stores it in a string variable.
-    std::cout << "\nPlease enter a number 1-7 here: ";
-    std::string userInput;
-    std::cin >> userInput;
-    std::cin.clear(); 
-    std::cin.ignore(INT_MAX, '\n');
+    int switchCase = AskForNumber();
 
-    try
-    {
-        int switchCase = std::stoi(userInput);
-    }
-    catch (...)
-    {
-
-    }
+    std::cout << "\n\n" << switchCase << std::endl; 
     
     // switch(userInput)
 
@@ -157,6 +146,41 @@ void LeftShift(unsigned int numb)
 void RightShift(unsigned int numb)
 {
     bitField = numb >> 1; 
+}
+
+int AskForNumber()
+{
+    bool condition = true; // exit condition for the do while loop
+
+    do
+    {
+        // Prompts user for input and stores it in a string variable.
+        std::cout << "\nPlease enter a number 1-7 here: "; 
+        std::string userInput;
+        std::cin >> userInput;
+        std::cin.clear();
+        std::cin.ignore(INT_MAX, '\n');
+
+        try
+        {
+            int switchCase = std::stoi(userInput); 
+
+            if (switchCase >= 1 && switchCase <= 7)
+            {
+                return switchCase;
+            }
+            else
+            {
+                std::cout << "\n\nInvalid response. Please try again.\n\n";
+            }
+        }
+        catch (...)
+        {
+            std::cout << "\n\nInvalid response. Please try again.\n\n"; 
+        }
+
+
+    } while (condition);
 }
 
 
