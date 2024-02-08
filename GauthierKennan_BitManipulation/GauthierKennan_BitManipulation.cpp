@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 
 unsigned int bitField = 19; // Global Value
@@ -16,18 +17,86 @@ void TurnOff(int bitIndex); // Method used to "turn off" (change from 1 to 0) a 
 
 void Toggle(int bitIndex); // Method used to "toggle" (0 becomes 1 and vice versa) a bit at a specific index.
 
+void Negate(unsigned int numb); // Inverts all of the bits within the numb int parameter. 
+
+void LeftShift(unsigned int numb); // Left shifts the numb int parameter by 1.
+
+void RightShift(unsigned int numb); // Right shifts the numb int parameter by 1.
+
 
 
 
 int main()
 {
-    std::string test = ConvertToBinary(bitField);
-    std::cout << test << "\n\n";
+    std::cout << "\n\n========================\tWelcome to my Bit Manipulation Lab\t========================\n\n";
 
-    Toggle(10);
+    std::cout << "The value of my global bit field is: " << bitField << std::endl;
+    std::cout << "And it's value in binary is: " << ConvertToBinary(bitField) << "\n\n";
 
-    std::string test2 = ConvertToBinary(bitField); 
-    std::cout << test2 << "\n\n"; 
+
+
+    std::cout << "****************************************************************************\n\n";
+    std::cout << "Which operation would you like to perform?\n\n";
+
+
+    bool condition = true; // exit condition for do while loop.
+
+
+    // Vector of strings used to prompt user which bitwise operation they want to perform on the bitField unsinged int.
+    std::vector<std::string> bitwiseOperations = { "1 = TurnOff", "2 = TurnOff", "3 = Toggle", "4 = Negate", "5 = LeftShift", "6 = RightShift", "7 = Exit Program"};
+
+    
+    for (std::string bitwise : bitwiseOperations) 
+    {
+        std::cout << bitwise << std::endl; 
+    }
+
+    // Prompts user for input and stores it in a string variable.
+    std::cout << "\nPlease enter a number 1-7 here: ";
+    std::string userInput;
+    std::cin >> userInput;
+    std::cin.clear(); 
+    std::cin.ignore(INT_MAX, '\n');
+
+    try
+    {
+        int switchCase = std::stoi(userInput);
+    }
+    catch (...)
+    {
+
+    }
+    
+    // switch(userInput)
+
+
+
+
+    //do
+    //{
+    //    std::cout << "****************************************************************************\n\n"; 
+    //    std::cout << "Which operation would you like to perform?\n\n";
+
+
+
+    //    for (std::string bitwise : bitwiseOperations) 
+    //    {
+    //        std::cout << bitwise << std::endl; 
+    //    }
+
+
+    //    // Prompts user for input and stores it in a string variable.
+    //    std::cout << "\nPlease enter a number 1-7 here: ";
+    //    std::string userInput;
+    //    std::cin >> userInput;
+    //    std::cin.clear();
+    //    std::cin.ignore(INT_MAX, '\n');
+
+
+
+    //} while (condition);
+
+
 
 }
 
@@ -65,7 +134,6 @@ void TurnOn(int bitIndex)
 }
 
 
-
 void TurnOff(int bitIndex)
 {
     bitField &= ~(1 << bitIndex);
@@ -74,6 +142,21 @@ void TurnOff(int bitIndex)
 void Toggle(int bitIndex)
 {
     bitField ^= (1 << bitIndex);
+}
+
+void Negate(unsigned int numb)
+{
+    bitField = ~numb;
+}
+
+void LeftShift(unsigned int numb)
+{
+    bitField = numb << 1; 
+}
+
+void RightShift(unsigned int numb)
+{
+    bitField = numb >> 1; 
 }
 
 
