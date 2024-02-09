@@ -5,7 +5,21 @@
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    srand((unsigned)time(NULL)); // Provides seed value.
+    
+    // Array of 15 random numbers.
+    int numbArray[15];
+
+    for (int i = 0; i < 15; i++) // Adds a random number to each index within numbArray.
+    {
+        numbArray[i] = rand();
+    }
+
+    for (int i = 0; i < 15; i++) // For loop to print out each number and their memory addresses.
+    {
+        std::cout << "Index:\t" << i << "\tValue:\t" << numbArray[i] << "\t\tMemory address:\t" << &numbArray[i] << std::endl; 
+
+    }
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
