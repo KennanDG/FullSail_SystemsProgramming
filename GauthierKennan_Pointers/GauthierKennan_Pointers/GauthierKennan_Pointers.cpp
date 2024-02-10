@@ -34,7 +34,7 @@ public:
 
 };
 
-void GetCarInfo(Car car); // Asks for user input to construct a car object. 
+void GetCarInfo(Car& car); // Asks for user input to construct a car object. 
 
 // Vector of strings to display color options to the user. To be used in the GetCarInfo() method.
 std::vector<std::string> colorOptions = { "0 = Red", "1 = Blue", "2 = Silver", "3 = White", "4 = Black", "5 = Orange" };
@@ -89,16 +89,64 @@ int main()
 
     int iterator = 1; // Keeps track of which car the user is making.
 
-    for (Car& car : arrayOfCars) // Asks the user to fill in the info about each car with the arrayOfCars.
+    for (int i = 0; i < 3; i++) // Asks the user to fill in the info about each car with the arrayOfCars.
     {
         std::cout << "\nFor Car " << iterator << ":\n\n";
         
-        GetCarInfo(car);
+        GetCarInfo(arrayOfCars[i]);
 
         iterator++;
     }
 
+    int iterator2 = 1; // Keeps track of which car is being displayed.
 
+    std::cout << "\n\n***************************\tVehicle information\t***************************\n\n";
+
+    for (Car& car : arrayOfCars)
+    {
+        std::string carColor;
+        switch (car.mColor)
+        {
+        case 0:
+        {
+            carColor = "Red";
+            break;
+        }
+        case 1:
+        {
+            carColor = "Blue";
+            break;
+        }
+        case 2:
+        {
+            carColor = "Silver";
+            break;
+        }
+        case 3:
+        {
+            carColor = "White";
+            break;
+        }
+        case 4:
+        {
+            carColor = "Black";
+            break;
+        }
+        case 5:
+        {
+            carColor = "Orange";
+            break;
+        }
+        }
+        
+        std::cout << "Car " << iterator2 << ":\t";
+        std::cout << car.mYear << " ";
+        std::cout << car.mColor << " ";
+        std::cout << car.mMake << " ";
+        std::cout << car.mModel << " with ";
+        std::cout << car.mMileage << " miles";
+        std::cout << "\n\n************************\n\n";
+    }
 
 }
 
@@ -119,7 +167,7 @@ void ClearInput()
 
 
 
-void GetCarInfo(Car car)
+void GetCarInfo(Car& car)
 {
     std::cout << "Make: "; 
     std::cin.getline(car.mMake, 32) ;
