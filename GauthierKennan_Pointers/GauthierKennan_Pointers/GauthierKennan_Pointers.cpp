@@ -2,12 +2,49 @@
 //
 
 #include <iostream>
+#include <string>
+
+
+void PrintIntAndMemory(int numb, int* pointer); // Method used to print out an int and its memory address.
+
+enum EnumColorDefinition
+{
+    Red,
+    Blue,
+    Silver,
+    White,
+    Black
+};
+
+
+struct Car
+{
+public:
+    // Members
+    char mMake;
+    char mModel;
+    int mYear;
+    int mMileage;
+    EnumColorDefinition mColor;
+
+    // Constructor
+    Car(char make, char model, int year, int mileage, EnumColorDefinition color) : mMake(make), mModel(model), mYear(year), mMileage(mileage), mColor(color)
+    {}
+
+};
+
+
+
 
 int main()
 {
     srand((unsigned)time(NULL)); // Provides seed value.
     
-    // Array of 15 random numbers.
+
+    std::cout << "\n\n***************************\tProgram 1\t***************************\n\n";
+
+
+    // First array of 15 random numbers.
     int numbArray[15];
 
     for (int i = 0; i < 15; i++) // Adds a random number to each index within numbArray.
@@ -20,7 +57,52 @@ int main()
         std::cout << "Index:\t" << i << "\tValue:\t" << numbArray[i] << "\t\tMemory address:\t" << &numbArray[i] << std::endl; 
 
     }
+
+    std::cout << "\n\n***************************\tProgram 2\t***************************\n\n";
+
+    // Second array of 15 random numbers.
+    int numbArray2[15]; 
+
+    for (int i = 0; i < 15; i++) // Adds a random number to each index within numbArray.
+    {
+        numbArray2[i] = rand();
+    }
+
+    for (int i = 0; i < 15; i++) // For loop to print out each number and their memory addresses.
+    {
+        int* pointer = &numbArray2[i]; // Stores the memory address of the current iterable.
+
+        std::cout << "Index:\t" << i << "\t";
+        PrintIntAndMemory(numbArray2[i], pointer); 
+
+    }
+
+
+    std::cout << "\n\n***************************\tProgram 3\t***************************\n\n";
+
+
+
+
+
 }
+
+
+
+
+void PrintIntAndMemory(int numb, int* pointer)
+{
+    std::cout << "Value:\t" << numb << "\t\tMemory address:\t" << pointer << std::endl;
+}
+
+
+
+
+
+
+
+
+
+
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
