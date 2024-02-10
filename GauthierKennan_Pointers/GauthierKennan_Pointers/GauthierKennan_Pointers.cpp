@@ -3,17 +3,22 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 
 void PrintIntAndMemory(int numb, int* pointer); // Method used to print out an int and its memory address.
 
-enum EnumColorDefinition
+void ClearInput(); // Clears the cin buffer.
+
+
+enum EnumColorDefinition // Options for the color of a car object
 {
     Red,
     Blue,
     Silver,
     White,
-    Black
+    Black,
+    Orange
 };
 
 
@@ -21,19 +26,18 @@ struct Car
 {
 public:
     // Members
-    char mMake;
-    char mModel;
+    char mMake[32];
+    char mModel[32];
     int mYear;
     int mMileage;
     EnumColorDefinition mColor;
 
-    // Constructor
-    Car(char make, char model, int year, int mileage, EnumColorDefinition color) : mMake(make), mModel(model), mYear(year), mMileage(mileage), mColor(color)
-    {}
-
 };
 
+void GetCarInfo(Car car); // Asks for user input to construct a car object. 
 
+// Vector of strings to display color options to the user. To be used in the GetCarInfo() method.
+std::vector<std::string> colorOptions = { "0 = Red", "1 = Blue", "2 = Silver", "3 = White", "4 = Black", "5 = Orange" };
 
 
 int main()
@@ -79,8 +83,20 @@ int main()
 
 
     std::cout << "\n\n***************************\tProgram 3\t***************************\n\n";
+    std::cout << "This program will ask you to create an array of 3 car objects.\n";
 
+    Car arrayOfCars[3]; // An array of three car objects.
 
+    int iterator = 1; // Keeps track of which car the user is making.
+
+    for (Car& car : arrayOfCars) // Asks the user to fill in the info about each car with the arrayOfCars.
+    {
+        std::cout << "\nFor Car " << iterator << ":\n\n";
+        
+        GetCarInfo(car);
+
+        iterator++;
+    }
 
 
 
@@ -92,6 +108,118 @@ int main()
 void PrintIntAndMemory(int numb, int* pointer)
 {
     std::cout << "Value:\t" << numb << "\t\tMemory address:\t" << pointer << std::endl;
+}
+
+
+void ClearInput()
+{
+    std::cin.clear(); // clears the fail FLAGS, not the buffer
+    std::cin.ignore(INT_MAX, '\n'); // actually clears what was typed into the cin buffer
+}
+
+
+
+void GetCarInfo(Car car)
+{
+    std::cout << "Make: "; 
+    std::cin.getline(car.mMake, 32) ;
+    ClearInput(); 
+
+
+    std::cout << "Model: "; 
+    std::cin.getline(car.mModel, 32); 
+    ClearInput();
+
+    bool condition1 = true; // exit condition for do while loop
+    do
+    {
+        std::cout << "Year: ";
+        std::string input;
+        std::cin >> input; 
+        try
+        {
+            car.mYear = std::stoi(input);
+            if (car.mYear > 1886)
+            {
+                condition1 = false;
+            }
+            else
+            {
+                std::cout << "Cars didn't exist before then. Please try again.\n";
+            }
+            
+        }
+        catch (...)
+        {
+            std::cout << "Error. Please enter a valid number.\n";
+        }
+
+    } while (condition1);
+    ClearInput();
+    std::cout << "\n";
+
+    bool condition2 = true; // exit condition for do while loop
+
+    do
+    {
+        std::cout << "Mileage: ";
+        std::string input;
+        std::cin >> input; 
+        try
+        {
+            car.mMileage = std::stoi(input);
+            if (car.mMileage >= 0)
+            {
+                condition2 = false;
+            }
+            else
+            {
+                std::cout << "Cars can't have negative mileage. Please try again.\n";
+            }
+        }
+        catch (...)
+        {
+            std::cout << "Error. Please enter a valid number.\n";
+        }
+
+    } while (condition2);
+    ClearInput(); 
+    std::cout << "\n"; 
+    
+
+    for (std::string color : colorOptions)
+    {
+        std::cout << color << std::endl;
+
+    }
+    bool condition3 = true; // exit condition for do while loop
+    do
+    {
+        std::cout << "\nEnter a number 0-5 to select a color: ";
+        std::string input;
+        std::cin >> input;
+        try
+        {
+            int selectedColor = std::stoi(input);
+            if (selectedColor >= 0 && selectedColor <= 5)
+            {
+                car.mColor = (EnumColorDefinition)selectedColor; 
+                condition3 = false;
+            }
+            else
+            {
+                std::cout << "\nError. Please enter a valid number 0-5.";
+            }
+        }
+        catch (...)
+        {
+            std::cout << "\nError. Please enter a valid number 0-5.";
+        }
+
+
+    } while (condition3);   
+    ClearInput(); 
+    std::cout << "\n"; 
 }
 
 
