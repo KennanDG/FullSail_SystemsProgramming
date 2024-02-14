@@ -14,6 +14,7 @@ namespace Helper
 
 
 	
+	// Method used to get a valid integer from the user.
 	int GetValidatedInt(const char* strMessage, int nMinimumRange = 0, int nMaximumRange = 0)
 	{
 		bool exitCondition = true;
@@ -85,9 +86,12 @@ namespace Helper
 	
 
 
-	void PrintMenu(std::vector<const char*&> menu)
+	void PrintMenu(std::vector<const char*>& menu) // Prints out a menu onto the console.
 	{
-
+		for (const char*& option : menu)
+		{
+			std::cout << option << std::endl;
+		}
 	}
 
 

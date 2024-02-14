@@ -7,13 +7,17 @@ int main()
 {
     srand((unsigned)time(NULL));
     
-    const char* strMessage = "Please enter a number here: ";
+    const char* strMessage = "Please enter a number 1-4 here: ";
     int min = 1;
     int max = 4;
 
-    // Helper::GetValidatedInt(strMessage, min, max);
+    std::vector<const char*> menu = { "1) first option", "2) second option", "3) third option", "4) fourth option" };
+
+    Helper::GetValidatedInt(strMessage, min, max);
 
     std::cout << Helper::RandomInt(50, 69) << std::endl;
+
+    Helper::PrintMenu(menu);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
