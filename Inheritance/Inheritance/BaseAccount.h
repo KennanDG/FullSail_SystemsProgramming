@@ -25,10 +25,9 @@ public:
 
 
 	// Methods
-	virtual void Withdraw(float amount); // decreases mAccountBalance by the amount parameter.
+	virtual void Withdraw(float amount); // decreases mAccountBalance by the amount parameter and adds 1 to mWithdrawals.
 
 	virtual void Deposit(float amount); // Increases mAccountBalance by the amount parameter.
 
-	
 };
 

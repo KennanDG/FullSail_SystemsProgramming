@@ -2,10 +2,17 @@
 //
 
 #include <iostream>
+#include "CheckingAccount.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    CheckingAccount test = CheckingAccount(10.5,11);
+
+    std::cout << test.GetBalance() << std::endl;
+
+    test.Withdraw(5);
+
+    std::cout << test.GetBalance() << std::endl; 
 }
 
 

@@ -128,10 +128,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BaseAccount.cpp" />
+    <ClCompile Include="CheckingAccount.cpp" />
     <ClCompile Include="Inheritance.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseAccount.h" />
+    <ClInclude Include="CheckingAccount.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
