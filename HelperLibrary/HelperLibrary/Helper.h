@@ -95,4 +95,13 @@ namespace Helper
 	}
 
 
+	void CheckMemoryLeak(int setBreak) // Method used to check for a memory leak.
+	{
+		// Memory detection code provided by the lecture code.
+		_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+		_CrtSetBreakAlloc(setBreak); // set block of memory to find memory leak
+		_CrtDumpMemoryLeaks();
+	}
+
+
 }
