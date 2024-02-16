@@ -10,7 +10,11 @@ public:
 	{}
 
 	// Constructor
-	CheckingAccount(float accountBalance, int withdrawals) : BaseAccount(accountBalance, withdrawals)
+	CheckingAccount(float accountBalance, int withdrawals = 0) : BaseAccount(accountBalance, withdrawals)
+	{}
+
+	// Destructor
+	~CheckingAccount()
 	{}
 
 	// No getters/setters required as there are no additional members

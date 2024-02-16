@@ -1,5 +1,5 @@
 #pragma once
-
+#include <iostream>
 
 class BaseAccount
 {
@@ -13,6 +13,9 @@ protected:
 public:
 	// Constructor
 	BaseAccount(float accountBalance = 0, int withdrawals = 0) : mAccountBalance(accountBalance), mWithdrawals(withdrawals)
+	{}
+	// Destructor (made virtual because this is the base class).
+	virtual ~BaseAccount()
 	{}
 
 	// Getters
