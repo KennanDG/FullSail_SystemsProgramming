@@ -129,12 +129,14 @@
   <ItemGroup>
     <ClCompile Include="BaseAccount.cpp" />
     <ClCompile Include="CheckingAccount.cpp" />
+    <ClCompile Include="CreditAccount.cpp" />
     <ClCompile Include="Inheritance.cpp" />
     <ClCompile Include="SavingsAccount.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseAccount.h" />
     <ClInclude Include="CheckingAccount.h" />
+    <ClInclude Include="CreditAccount.h" />
     <ClInclude Include="Helper.h" />
     <ClInclude Include="SavingsAccount.h" />
   </ItemGroup>
