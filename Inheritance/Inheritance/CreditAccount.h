@@ -8,7 +8,7 @@ private:
 
 public:
 	// Default constructor
-	CreditAccount(int data = 0, float accountBalance = 40, int withdrawal = 0) : mData(data), BaseAccount(accountBalance, withdrawal)
+	CreditAccount(int data = 0, float accountBalance = 40.00f, int withdrawal = 0) : mData(data), BaseAccount(accountBalance, withdrawal)
 	{}
 
 	// Destructor
