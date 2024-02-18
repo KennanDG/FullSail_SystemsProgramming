@@ -4,12 +4,12 @@ void CreditAccount::Withdraw(float amount)
 {
 	if (mAccountBalance < 0.00f || mData >= 40) // If the users account is still in the negative.
 	{
-		std::cout << "\nYour account is still overdrawn. Further payments are still needed.\n";
+		std::cout << "\nYour account is still overdrawn. Further payments are still needed.\n\n";
 		std::cout << "Credit account balance: " << mAccountBalance << "\n\n";
 	}
 	else if ((mData + amount) > 40.00f) // If the user goes over the spending limit
 	{
-		std::cout << "\nYou've gone past your spending limit. A $5000 fee has been added to the credit account.\n";
+		std::cout << "\nYou've gone past your spending limit. A $5000 fee has been added to the credit account.\n\n";
 		mAccountBalance -= (5000.00f + amount);
 		std::cout << "Credit account balance: $" << mAccountBalance << "\n\n";
 		mData += amount; 
