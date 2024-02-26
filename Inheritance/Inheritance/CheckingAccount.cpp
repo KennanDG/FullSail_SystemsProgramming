@@ -4,7 +4,7 @@ void CheckingAccount::Withdraw(float amount)
 {
 	if ((mAccountBalance - amount) < 0.00f) // If there is not enough funds to make a withdrawal.
 	{
-		std::cout << "\nYou're unable to withdraw because your checking account has insufficient funds: $" << mAccountBalance << "\n";
+		std::cout << "\nYou're unable to withdraw because your checking account has insufficient funds: $" << mAccountBalance << "\n\n";
 		std::cout << "Contact the bank to make a deposit.\n\n";
 	}
 	else
