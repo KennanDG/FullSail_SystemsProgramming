@@ -25,5 +25,6 @@ public:
 
 	virtual void DisplayRecord() = 0; // Pure virtual function. All derived classes must override this function.
 
+	static void MemoryLeak(int setBreak); // Checks for memory leak within the program.
 };
 

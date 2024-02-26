@@ -1,3 +1,4 @@
+#pragma once
 #include "Base.h"
 #include "Helper.h"
 
@@ -12,12 +13,10 @@ Base& Base::operator=(Base& other)
 
 
 
-
 Base::Base(Base& other)
 {
 	Base::operator=(other);
 }
-
 
 
 
@@ -28,8 +27,14 @@ Base::~Base()
 
 
 
-
 void Base::SetName(const char* source)
 {
 	Helper::CopyString(source, mName);
+}
+
+
+
+void Base::MemoryLeak(int setBreak)
+{
+	Helper::CheckMemoryLeak(setBreak);
 }
