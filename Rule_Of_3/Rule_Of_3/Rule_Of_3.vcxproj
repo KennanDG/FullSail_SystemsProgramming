@@ -130,11 +130,13 @@
     <ClCompile Include="Base.cpp" />
     <ClCompile Include="Employee.cpp" />
     <ClCompile Include="Rule_Of_3.cpp" />
+    <ClCompile Include="Student.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Base.h" />
     <ClInclude Include="Employee.h" />
     <ClInclude Include="Helper.h" />
+    <ClInclude Include="Student.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

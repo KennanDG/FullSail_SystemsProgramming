@@ -4,6 +4,7 @@
 #include <iostream>
 #include "Base.h"
 #include "Employee.h"
+#include "Student.h"
 
 
 int main()
@@ -14,6 +15,11 @@ int main()
 	test.SetName("Mia");
 	test.SetSalary(100000);
 	test.DisplayRecord();
+
+	Student test2;
+	test2.SetGPA(3.74f);
+	test2.SetName("Abi");
+	test2.DisplayRecord();
 	
 }
 
