@@ -1,6 +1,7 @@
 #pragma once
 #include "Base.h"
-#include "Helper.h"
+#include <string.h>
+
 
 Base& Base::operator=(Base& other)
 {
@@ -27,14 +28,12 @@ Base::~Base()
 
 
 
-void Base::SetName(const char* source)
+void Base::SetName(char* newName)
 {
-	Helper::CopyString(source, mName);
+	delete[] mName; // deletes whatever was previously in the destination parameter.
+
+	size_t length = strlen(newName) + 1; // Adds 1 to the length of the string to account for the null terminator '\0'
+	mName = new char[length]; // Allocates memory in the heap for a new char array.
+	strcpy_s(mName, length, newName); // Deep copies from the source to the destination.
 }
 
-
-
-void Base::MemoryLeak(int setBreak)
-{
-	Helper::CheckMemoryLeak(setBreak);
-}

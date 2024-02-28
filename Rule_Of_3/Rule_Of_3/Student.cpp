@@ -6,7 +6,7 @@ Student& Student::operator=(Student& other)
 	if (this != &other) // makes sure 'other' is not the same object.
 	{
 		SetName(other.GetName());
-		//SetSalary(other.mSalary);
+		SetGPA(other.GetGPA());
 	}
 	return *this;
 }

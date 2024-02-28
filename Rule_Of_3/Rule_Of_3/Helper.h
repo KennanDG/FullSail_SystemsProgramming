@@ -47,11 +47,18 @@ namespace Helper
 					return input;
 					exitCondition = false;
 				}
+				else if (input >= nMinimumRange && nMinimumRange != 0 && nMaximumRange == 0) // Ignores the max range.
+				{
+					ClearInput();
+					return input;
+					exitCondition = false;
+				}
 				else // If input is not within range.
 				{
 					ClearInput(); 
 					std::cout << "\nError. Invalid input, please try again.\n\n";
 				}
+
 			}
 			else // If input cannot be stored in an int data type.
 
@@ -64,6 +71,54 @@ namespace Helper
 
 	}
 
+
+
+	// Method used to get a valid float from the user.
+	float GetValidatedFloat(const char* strMessage, float nMinimumRange = 0.00f, float nMaximumRange = 0.00f)
+	{
+		bool exitCondition = true;
+		do
+		{
+			std::cout << strMessage; // Message to prompt user for input.
+
+			float input; // Number entered by the user. 
+
+			if (std::cin >> input) // Checks if the data entered can be stored in an int variable.
+			{
+				if (input >= nMinimumRange && input <= nMaximumRange) // Checks if input entered is within range.
+				{
+					ClearInput();
+					return input;
+					exitCondition = false;
+				}
+				else if (nMinimumRange == 0 && nMaximumRange == 0) // Ignores range and accepts any integer.
+				{
+					ClearInput();
+					return input;
+					exitCondition = false;
+				}
+				else if (input >= nMinimumRange && nMinimumRange != 0 && nMaximumRange == 0) // Ignores the max range.
+				{
+					ClearInput();
+					return input;
+					exitCondition = false;
+				}
+				else // If input is not within range.
+				{
+					ClearInput();
+					std::cout << "\nError. Invalid input, please try again.\n\n";
+				}
+			}
+			else // If input cannot be stored in an int data type.
+
+			{
+				ClearInput();
+				std::cout << "\nError. Invalid input, please try again.\n\n";
+			}
+
+		} while (exitCondition);
+
+	}
 
 
 	int RandomInt(int minRange = 0, int maxRange = 0) // Returns a random integer within a given range (optional)
@@ -111,6 +166,8 @@ namespace Helper
 		_CrtSetBreakAlloc(setBreak); // set block of memory to find memory leak
 		_CrtDumpMemoryLeaks();
 	}
+
+
 
 
 }
