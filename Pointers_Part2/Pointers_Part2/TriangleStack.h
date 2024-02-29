@@ -11,6 +11,7 @@ public:
 	// Constructors
 	TriangleStack(float base = 0.000f, float height = 0.000f) : mBase(base), mHeight(height) // Default constuctor
 	{}
+	TriangleStack& operator=(TriangleStack& other);
 	TriangleStack(const TriangleStack& other) : mBase(other.GetBase()), mHeight(other.GetHeight()) // Copy Constructor
 	{}
 	~TriangleStack() // Destructor
